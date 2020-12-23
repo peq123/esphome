@@ -453,7 +453,7 @@ LightColorValues LightCall::validate_() {
       }
     }
   }
-  ESP_LOGI(TAG, "%.2f %.2f %.2f %.2f", *this->red_, *this->green_, *this->blue_, *this->white_);
+  ESP_LOGW(TAG, "%.2f %.2f %.2f %.2f", *this->red_, *this->green_, *this->blue_, *this->white_);
 
 #define VALIDATE_RANGE_(name_, upper_name) \
   if (name_##_.has_value()) { \
@@ -491,7 +491,7 @@ LightColorValues LightCall::validate_() {
     v.set_color_temperature(*this->color_temperature_);
 
   v.normalize_color(traits);
-  ESP_LOGI(TAG, "%.2f %.2f %.2f %.2f", *v->red_, *v->green_, *v->blue_, *v->white_);
+  ESP_LOGW(TAG, "%.2f %.2f %.2f %.2f", v->red_, v->green_, v->blue_, v->white_);
   // Flash length check
   if (this->has_flash_() && *this->flash_length_ == 0) {
     ESP_LOGW(TAG, "'%s' - Flash length must be greater than zero!", name);
