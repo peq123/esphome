@@ -43,6 +43,7 @@ void HOT ESP8266PWM::write_state(float state) {
     stopWaveform(this->pin_->get_pin());
     this->pin_->digital_write(!this->pin_->is_inverted());
   } else {
+    ESP_LOGW("PWM", "%s duty_on: %.1f %.2f", this->pin_, duty_on, duty_off);
     startWaveform(this->pin_->get_pin(), duty_on, duty_off, 0);
   }
 }
