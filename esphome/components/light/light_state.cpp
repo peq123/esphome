@@ -491,7 +491,8 @@ LightColorValues LightCall::validate_() {
     v.set_color_temperature(*this->color_temperature_);
 
   v.normalize_color(traits);
-  ESP_LOGW(TAG, "%.2f %.2f %.2f %.2f", v->red_, v->green_, v->blue_, v->white_);
+  ESP_LOGW(TAG, "%.2f %.2f %.2f %.2f %.2f %.2f", v.get_red(), v.get_green(), v.get_blue(), v.get_white(),
+           v.get_brightness(), v.get_color_temperature());
   // Flash length check
   if (this->has_flash_() && *this->flash_length_ == 0) {
     ESP_LOGW(TAG, "'%s' - Flash length must be greater than zero!", name);
